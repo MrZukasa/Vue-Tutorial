@@ -19,28 +19,61 @@
   <body>
 
     <div class="container">
-      <h1>Vue Js Prima App</h1>
-      Directive 
-      V-[Directive name]:[argument name]
-        <ul>
-          <li>v-bind : agganciamo ad html una variabile</li>
-          <li>Methods</li>
-          <li>v-once : bloccare il cambio di una variabile alla prima istanza</li>
-          <li>v-html : renderizzare stringe direttamente in html</li>
-        </ul>
-      <hr>
-      <div id="app">
-        <p>Hello, {{ name }}</p>
-        <p>Hello, {{ mioArray }}</p>
-        <p>Hello, {{ car.colore }}</p>
-        <p>{{ linkImg }}</p>
-        <div v-html="myhtml"></div>
-        <img v-once v-bind:src="linkImg">
-        <button class="btn btn-primary" @click="linkImg ='https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png'" >Premimi con v-once</button>
-        <img :src="linkImg2">
-        <button class="btn btn-secondary" @click="cambioImg">Premimi con metodo</button>
+
+      <div class="row">        
+        <h1>Vue Js Prima App</h1>
+            Directive 
+            V-[Directive name]:[argument name]
+          <ul>
+            <li>v-bind : agganciamo ad html una variabile</li>
+            <li>Methods</li>
+            <li>v-once : bloccare il cambio di una variabile alla prima istanza</li>
+            <li>v-html : renderizzare stringe direttamente in html</li>
+            <li>v-on : Event Handling</li>
+          </ul>
+        <hr>
+        <div class="col">
+        <div id="app">
+          <p>Hello, {{ name }}</p>                         <!--* passaggio di parametro del nome -->
+          <p>Hello, {{ mioArray }}</p>                     <!--* passaggio di parametro dell'array -->
+          <p>Hello, {{ car.colore }}</p>                   <!--* passaggio di parametro di un oggetto.proprietà -->
+          <p><i style="color: blue">{{ linkImg }}</i></p>                             <!--* link contenente l'immagine -->
+          <div v-html="myhtml"></div>                      <!--* render di una srtinga contenente HTML -->
+          <div class="row-fluid">                          
+            <img v-once v-bind:src="linkImg">                 <!--* link non soggetto al cambio a causa del v-once -->
+            <img :src="linkImg2">                             <!--* v-bind può essere omesso con solo i : prima del source -->
+          </div>
+          <div class="row-fluid">
+            <div class="col">
+              <button class="btn btn-primary" @click="linkImg ='https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png'" >Premimi con v-once</button>      <!--* cambio link al click -->
+              <button class="btn btn-secondary" @click="cambioImg">Premimi con metodo</button>                                                                     <!--* cambio link al click con method-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--* esempio di ciclo -->
+
+      <div class="col">      
+        <div id="ciclo">
+          <br>
+          <ul>
+            <h3>Cani:</h3>
+            <li v-for="dog in dogs" key="dog.race">{{ dog.race }}</li>
+            <br>
+            <h3>Gatti:</h3>
+            <li v-for="cat in cats">{{ cat }}</li>
+          </ul>
+         </div>
+
+          <!--* esempio di counter con evento on -->
+
+        <div id="conto" class="row-fluid">
+          <p>Hai cliccato {{ counter }} volte <button class="btn btn-success" v-on:click="counter += 1">+1</button> </p>
+        </div>
       </div>
     </div>
+  </div>
 
   </body>      
 
